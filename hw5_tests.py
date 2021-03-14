@@ -114,9 +114,10 @@ class TestCard(unittest.TestCase):
 
         '''
         d = hw5_cards.Deck()
-        X = isinstance(d, hw5_cards.Deck)
-        Y = True
-        self.assertEqual(X, Y)
+        c = d.deal_card()
+        X = c
+        Y = hw5_cards.Card
+        self.assertIsInstance(X, Y)
         return X, Y
     
     def test_q6(self):
@@ -155,11 +156,12 @@ class TestCard(unittest.TestCase):
         '''
         d = hw5_cards.Deck()
         c = d.deal_card()
-        d.replace_card(c)
         X = len(d.cards)
-        Y = 52
-        self.assertEqual(X, Y)
-        return X, Y
+        d.replace_card(c)
+        Y = len(d.cards)
+        Z = 52
+        self.assertEqual(Y, Z)
+        return X+1, Y, Z
     
     def test_q8(self):
         '''
@@ -175,7 +177,7 @@ class TestCard(unittest.TestCase):
 
         '''
         d = hw5_cards.Deck()
-        c = hw5_cards.Card(3, 13)
+        c = d.deal_card()
         d.replace_card(c)
         X = len(d.cards)
         Y = 52
